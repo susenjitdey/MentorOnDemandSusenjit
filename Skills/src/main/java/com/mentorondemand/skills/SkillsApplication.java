@@ -1,4 +1,4 @@
-package com.mentorondemand.Skills;
+package com.mentorondemand.skills;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
