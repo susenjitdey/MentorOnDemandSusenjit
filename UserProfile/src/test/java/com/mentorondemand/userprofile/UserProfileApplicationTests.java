@@ -1,4 +1,4 @@
-package com.mentorondemand.UserProfile;
+package com.mentorondemand.userprofile;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
