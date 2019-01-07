@@ -1,4 +1,4 @@
-package com.mentorondemand.Trainings;
+package com.mentorondemand.trainings;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
