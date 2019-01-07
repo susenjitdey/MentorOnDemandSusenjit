@@ -1,4 +1,4 @@
-package com.mentorondemand.Trainings;
+package com.mentorondemand.trainings;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
