@@ -1,4 +1,4 @@
-package com.mentorondemand.UserProfile;
+package com.mentorondemand.userprofile;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
