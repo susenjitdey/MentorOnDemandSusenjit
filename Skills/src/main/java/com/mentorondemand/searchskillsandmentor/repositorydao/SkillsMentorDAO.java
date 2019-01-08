@@ -6,7 +6,7 @@ package com.mentorondemand.searchskillsandmentor.repositorydao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.mentorondemand.searchskillsandmentor.model.SkillsEntity;
+import com.mentorondemand.searchskillsandmentor.model.SkillsMentorEntity;
 
 
 /**
@@ -14,6 +14,6 @@ import com.mentorondemand.searchskillsandmentor.model.SkillsEntity;
  *
  */
 @Repository
-public interface SkillsDAO extends JpaRepository<SkillsEntity, Long> {
+public interface SkillsMentorDAO extends JpaRepository<SkillsMentorEntity, Long> {
 
 }
