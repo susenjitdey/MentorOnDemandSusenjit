@@ -4,6 +4,9 @@
 package com.mentorondemand.trainings.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+
+import org.springframework.data.annotation.LastModifiedDate;
+
 import java.util.Date;
 /**
  * @author javaibm04
@@ -34,16 +37,24 @@ public class TrainingsEntity {
 	@NotBlank
 	private String rating;
 	
-	@NotBlank
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@LastModifiedDate
 	private Date start_date;
 	
-	@NotBlank
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@LastModifiedDate
 	private Date end_date;
 	
-	@NotBlank
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@LastModifiedDate
 	private Date start_time;
 	
-	@NotBlank
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@LastModifiedDate
 	private Date end_time;
 	
 	@NotBlank
