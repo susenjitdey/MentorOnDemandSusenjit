@@ -5,7 +5,7 @@ package com.mentorondemand.userprofile.model;
 
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
+
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
