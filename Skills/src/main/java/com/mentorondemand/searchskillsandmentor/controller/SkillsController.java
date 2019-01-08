@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.mentorondemand.skills.controller;
+package com.mentorondemand.searchskillsandmentor.controller;
 
 /**
  * @author javaibm04

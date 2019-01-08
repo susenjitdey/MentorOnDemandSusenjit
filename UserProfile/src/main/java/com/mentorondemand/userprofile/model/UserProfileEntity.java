@@ -14,6 +14,8 @@ import javax.validation.constraints.NotBlank;
  * @author javaibm04
  *
  */
+@Entity
+@Table(name = "usertable")
 public class UserProfileEntity {
 	
 	
