@@ -7,7 +7,7 @@ package com.mentorondemand.skillstechnologies.model;
  * @author javaibm04
  *
  */
-public class SkillsMentorEntity {
+public class SkillsTechnologiesEntity {
 	
 	/*
 	 * id Name TOC Duration Prerequites
