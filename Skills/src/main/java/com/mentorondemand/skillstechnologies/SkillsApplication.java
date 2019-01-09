@@ -1,4 +1,4 @@
-package com.mentorondemand.searchskillsandmentor;
+package com.mentorondemand.skillstechnologies;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

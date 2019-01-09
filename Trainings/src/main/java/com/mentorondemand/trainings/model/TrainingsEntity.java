@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.LastModifiedDate;
 
+import java.io.Serializable;
 import java.util.Date;
 /**
  * @author javaibm04
@@ -14,11 +15,13 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "trainings")
-public class TrainingsEntity {
+public class TrainingsEntity implements Serializable{
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long user_id;

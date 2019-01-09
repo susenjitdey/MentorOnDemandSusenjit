@@ -1,12 +1,12 @@
 /**
  * 
  */
-package com.mentorondemand.searchskillsandmentor.repositorydao;
+package com.mentorondemand.skillstechnologies.repositorydao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.mentorondemand.searchskillsandmentor.model.SkillsMentorEntity;
+import com.mentorondemand.skillstechnologies.model.SkillsMentorEntity;
 
 
 /**

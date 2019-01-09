@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.mentorondemand.searchskillsandmentor.exception;
+package com.mentorondemand.skillstechnologies.exception;
 
 /**
  * @author javaibm04
