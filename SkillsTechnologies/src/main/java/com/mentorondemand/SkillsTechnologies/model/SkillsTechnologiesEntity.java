@@ -32,19 +32,21 @@ public class SkillsTechnologiesEntity {
 	//TOC
 	
 	@NotBlank
-	private DateTimeFormat duration;
+	private String duration;
 	
 	@NotBlank
 	private String prerequites;
 	
 	@NotBlank
-	private Currency price;
+	private Long price;
 
-	public Currency getPrice() {
+	
+
+	public Long getPrice() {
 		return price;
 	}
 
-	public void setPrice(Currency price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 
@@ -64,11 +66,13 @@ public class SkillsTechnologiesEntity {
 		this.skillname = skillname;
 	}
 
-	public DateTimeFormat getDuration() {
+
+
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(DateTimeFormat duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
