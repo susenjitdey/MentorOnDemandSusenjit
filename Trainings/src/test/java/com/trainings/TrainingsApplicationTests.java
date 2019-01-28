@@ -1,4 +1,4 @@
-package com.mentorondemand.MentorCalendar;
+package com.trainings;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MentorCalendarApplicationTests {
+public class TrainingsApplicationTests {
 
 	@Test
 	public void contextLoads() {
