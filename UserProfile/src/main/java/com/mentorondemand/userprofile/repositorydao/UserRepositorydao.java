@@ -13,8 +13,6 @@ import com.mentorondemand.userprofile.model.UserProfileEntity;
  *
  */
 @Repository
-@RestController
-@RequestMapping()
-public interface UserProfileDAO extends JpaRepository<UserProfileEntity, Long>{
+public interface UserRepositorydao extends JpaRepository<UserProfileEntity, Long>{
 
 }

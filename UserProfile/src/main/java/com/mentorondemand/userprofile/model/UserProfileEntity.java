@@ -16,7 +16,7 @@ import javax.validation.constraints.NotBlank;
  */
 @Entity
 @Table(name = "usertable")
-public class UserProfileEntity {
+public class UserProfileEntity  {
 	
 	
 	// id
