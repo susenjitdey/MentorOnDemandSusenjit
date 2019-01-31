@@ -1,13 +1,13 @@
-package com.mentorprofile;
+package com.mentorondemand.trainings;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MentorProfileApplication {
+public class TrainingsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MentorProfileApplication.class, args);
+		SpringApplication.run(TrainingsApplication.class, args);
 	}
 
 }
