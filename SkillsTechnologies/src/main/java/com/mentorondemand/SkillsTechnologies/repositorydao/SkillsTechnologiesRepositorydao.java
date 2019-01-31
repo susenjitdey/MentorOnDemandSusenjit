@@ -12,6 +12,6 @@ import com.mentorondemand.SkillsTechnologies.model.SkillsTechnologiesEntity;
  * @author javaibm04
  *
  */
-public interface SkillsTechnologiesDAO extends JpaRepository<SkillsTechnologiesEntity, Long>{
+public interface SkillsTechnologiesRepositorydao extends JpaRepository<SkillsTechnologiesEntity, Long>{
 
 }
