@@ -19,5 +19,21 @@ public class SkillsTechnologiesController {
 	
 	@Autowired
 	SkillsTechnologiesEntity skillsTechnologiesEntity;
+	
+	
+	//Endpoints
+	/*
+	 * getSkill searchSkills
+	 */
+
+	//Input
+	/*
+	 * id searchString
+	 */
+//Output
+	/*
+	 * Skill Matching skills array
+	 */
+//Note: If search string is empty retrieve all Skills
 
 }

@@ -30,5 +30,17 @@ public class UserProfileController {
 		return userRepositorydao.findAll();
 		
 	}
+	
+	//List of end points
+	/*
+	 * getUser login signup confirmUser blockUser
+	 */
+//input
+	//id
+	
+	//output
+	//UserDetails
+	//No usage of other microservices.
+	
 
 }
