@@ -1,7 +1,7 @@
 #Name of the application
 spring:
   application:
-    name: skillaTechnologiesService
+    name: skillTechnologiesService
 
 #Eureka server url for registering
 #This is eureka client
@@ -17,5 +17,4 @@ instance:
   hostname: localhost
 
 server:
-  port: 8926  
-  
+  port: 8930

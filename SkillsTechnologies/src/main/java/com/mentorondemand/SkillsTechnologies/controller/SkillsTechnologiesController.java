@@ -3,11 +3,14 @@
  */
 package com.mentorondemand.SkillsTechnologies.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mentorondemand.SkillsTechnologies.model.SkillsTechnologiesEntity;
+import com.mentorondemand.SkillsTechnologies.repositorydao.SkillsTechnologiesRepositorydao;
 
 /**
  * @author javaibm04
@@ -18,13 +21,24 @@ import com.mentorondemand.SkillsTechnologies.model.SkillsTechnologiesEntity;
 public class SkillsTechnologiesController {
 	
 	@Autowired
-	SkillsTechnologiesEntity skillsTechnologiesEntity;
+	SkillsTechnologiesRepositorydao skillsTechnologiesRepositorydao;
 	
 	
-	//Endpoints
-	/*
-	 * getSkill searchSkills
-	 */
+	
+	@GetMapping("/Skill")
+	public List<SkillsTechnologiesRepositorydao>getSkill(){
+		
+		return null;//TODO
+	}
+	
+	@GetMapping("/SearchSkill")
+	public List<SkillsTechnologiesRepositorydao>searchSkills(){
+		
+		return null;//TODO
+	}
+	
+	
+
 
 	//Input
 	/*

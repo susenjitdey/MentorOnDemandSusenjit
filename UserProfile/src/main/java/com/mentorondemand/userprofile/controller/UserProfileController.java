@@ -31,10 +31,41 @@ public class UserProfileController {
 		
 	}
 	
-	//List of end points
-	/*
-	 * getUser login signup confirmUser blockUser
-	 */
+	@GetMapping("/login")
+	public List<UserProfileEntity> login() {
+		
+		return userRepositorydao.findAll();
+		
+	}
+	
+	@GetMapping("/getUser")
+	public List<UserProfileEntity> getUser() {
+		
+		return userRepositorydao.findAll();
+		
+	}
+	
+	@GetMapping("/signup")
+	public List<UserProfileEntity> signup() {
+		
+		return userRepositorydao.findAll();
+		
+	}
+	
+	@GetMapping("/confirmUser")
+	public List<UserProfileEntity> confirmUser() {
+		
+		return userRepositorydao.findAll();
+		
+	}
+	
+	@GetMapping("/blockUser")
+	public List<UserProfileEntity> blockUser() {
+		
+		return userRepositorydao.findAll();
+		
+	}
+	
 //input
 	//id
 	

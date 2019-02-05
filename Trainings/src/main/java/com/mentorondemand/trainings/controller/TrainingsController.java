@@ -3,8 +3,14 @@
  */
 package com.mentorondemand.trainings.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.mentorondemand.trainings.repositorydao.TrainingsRepositoryDao;
 
 /**
  * @author javaibm04
@@ -14,14 +20,55 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/trainings")
 public class TrainingsController {
 	
-	//Endpoints and other infos
+	@Autowired
+	TrainingsRepositoryDao trainingsRepositoryDao;
 	
-	/*
-	 * Trainings MicroService endpoints 
-	 * getCompletedTrainings
-	 * getUnderProgressTrainings createTraining proposeTraining, approveTraining
-	 * finalizeTraining getTrainingDetails
-	 */
+	@GetMapping("/TrainingDetails")
+	public List<TrainingsRepositoryDao> getTrainingDetails(){
+		
+		return null;//TODO
+	}
+	
+	@GetMapping("/TrainingDetails")
+	public List<TrainingsRepositoryDao> getCompletedTrainings(){
+		
+		return null;//TODO
+	}
+	
+	@GetMapping("/TrainingDetails")
+	public List<TrainingsRepositoryDao> getUnderProgressTrainings(){
+		return null;//TODO
+		
+	}
+	
+	@GetMapping("/TrainingDetails")
+	public List<TrainingsRepositoryDao> createTraining(){
+		return null;//TODO
+		
+		
+	}
+	
+	@GetMapping("/TrainingDetails")
+	public List<TrainingsRepositoryDao> proposeTraining(){
+		return null;//TODO
+		
+		
+	}
+	
+	@GetMapping("/TrainingDetails")
+	public List<TrainingsRepositoryDao> approveTraining(){
+		return null;//TODO
+		
+		
+	}
+	
+	@GetMapping("/TrainingDetails")
+	public List<TrainingsRepositoryDao> finalizeTraining(){
+		return null;//TODO
+		
+		
+	}
+	
 	
 	//Inputs
 	

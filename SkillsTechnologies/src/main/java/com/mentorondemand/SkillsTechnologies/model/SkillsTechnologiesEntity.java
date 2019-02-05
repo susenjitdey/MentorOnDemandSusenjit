@@ -3,16 +3,12 @@
  */
 package com.mentorondemand.SkillsTechnologies.model;
 
-import java.util.Currency;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author javaibm04

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.mentorondemand.payments.controller;
+package com.mentorondemand.mentorsklcal.controller;
 
 import java.util.List;
 
@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mentorondemand.payments.repositorydao.PaymentRepositoryDao;
+import com.mentorondemand.mentorsklcal.repositorydao.MentorCalRepositoryDao;
 
 /**
  * @author javaibm04
  *
  */
 @RestController
-@RequestMapping("/payment")
-public class PaymentController {
+@RequestMapping("/mentorcal")
+public class MentorCalendarController {
 	
 	@Autowired
-	PaymentRepositoryDao paymentRepositoryDao;
+	MentorCalRepositoryDao calRepositoryDao;
 	
-	@GetMapping("/confirmUser")
-	public List<PaymentRepositoryDao> makePayment(){
+	@GetMapping("/MentorSkills")
+	public List<MentorCalRepositoryDao>getMentorSkills(){
 		
-		return null; //TODO
+		return null;//TODO
 	}
 
 }
