@@ -29,6 +29,15 @@ public class UserProfileController {
 		
 		return userRepositorydao.findAll();
 		
+		
+		
+	}
+	
+	@GetMapping("/testString")
+	public String getTestString() {
+		
+		return "Hello USerAm Working";
+		
 	}
 	
 	@GetMapping("/login")
