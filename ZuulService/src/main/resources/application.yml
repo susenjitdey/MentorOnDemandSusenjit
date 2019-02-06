@@ -20,9 +20,9 @@ server:
   port: 8989
   
 zuul:
-  prefix: /mentarportal
+  prefix: /mentorportal
   routes:
     userAccessService:
-      path: /userService/**
+      path: /userservice/**
       service-id: USERACCESSSERVICE
       
