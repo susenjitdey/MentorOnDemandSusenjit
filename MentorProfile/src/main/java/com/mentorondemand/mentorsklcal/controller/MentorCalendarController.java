@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mentorondemand.mentorsklcal.repositorydao.MentorCalRepositoryDao;
+import com.mentorondemand.mentorsklcal.repositorydao.MentorSkillRepositoryDao;
 
 /**
  * @author javaibm04
@@ -23,10 +24,16 @@ public class MentorCalendarController {
 	@Autowired
 	MentorCalRepositoryDao calRepositoryDao;
 	
-	@GetMapping("/MentorSkills")
-	public List<MentorCalRepositoryDao>getMentorSkills(){
-		
+	@GetMapping("/MentorCalendar/{mentorId}")
+	public List<MentorSkillRepositoryDao>getMentorCalendar(){
+		System.out.println("get Mentor Calendar");
 		return null;//TODO
+	}
+	
+	@GetMapping("/CheckMentorAvailability/{mentorId}")
+	public List<MentorSkillRepositoryDao>checkMentorAvailability(){
+		
+		return null; //TODO
 	}
 
 }

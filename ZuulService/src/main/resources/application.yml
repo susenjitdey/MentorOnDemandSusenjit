@@ -25,4 +25,18 @@ zuul:
     userAccessService:
       path: /userservice/**
       service-id: USERACCESSSERVICE
+    trainingsService:
+      path: /trainingsService/**
+      service-id: TRAININGSSERVICE
+    skillTechnologiesService:
+      path: /skillTechService/**
+      service-id: SKILLTECHNOLOGIESSERVICE
+    mentorSkillCalendarService:
+      path: /skillMentService/**
+      service-id: MENTORSKILLCALENDARSERVICE
+    paymentsService:
+      path: /paymentService/**
+      service-id: PAYMENTSSERVICE
+     
+     
       

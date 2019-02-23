@@ -1,3 +1,4 @@
+# zuul.routes.producer.serviceId=HelloClient
 #Name of the application
 spring:
   application:

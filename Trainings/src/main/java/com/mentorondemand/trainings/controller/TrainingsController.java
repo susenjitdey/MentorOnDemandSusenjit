@@ -29,40 +29,40 @@ public class TrainingsController {
 		return null;//TODO
 	}
 	
-	@GetMapping("/TrainingDetails")
+	@GetMapping("/TrainingCompleted")
 	public List<TrainingsRepositoryDao> getCompletedTrainings(){
 		
 		return null;//TODO
 	}
 	
-	@GetMapping("/TrainingDetails")
+	@GetMapping("/TrainingInProgress")
 	public List<TrainingsRepositoryDao> getUnderProgressTrainings(){
 		return null;//TODO
 		
 	}
 	
-	@GetMapping("/TrainingDetails")
+	@GetMapping("/TrainingCreate")
 	public List<TrainingsRepositoryDao> createTraining(){
 		return null;//TODO
 		
 		
 	}
 	
-	@GetMapping("/TrainingDetails")
+	@GetMapping("/TrainingProposed")
 	public List<TrainingsRepositoryDao> proposeTraining(){
 		return null;//TODO
 		
 		
 	}
 	
-	@GetMapping("/TrainingDetails")
+	@GetMapping("/TrainingApproved")
 	public List<TrainingsRepositoryDao> approveTraining(){
 		return null;//TODO
 		
 		
 	}
 	
-	@GetMapping("/TrainingDetails")
+	@GetMapping("/TrainingFinalized")
 	public List<TrainingsRepositoryDao> finalizeTraining(){
 		return null;//TODO
 		
