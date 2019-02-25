@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 /**
  * @author javaibm04
@@ -17,23 +18,38 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "MentorSkill")
 public class MentorSkill {
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@NotBlank
 	private Long mid;
-	
+
+	@NotBlank
 	private Long sid;
-	
+
 	private String self_rating;
-	
+
+	@NotBlank
 	private Integer years_of_exp;
-	
+
+	@NotBlank
 	private String trainings_delivered;
-	
+
 	private String facilities_offered;
+
+	public MentorSkill(Long id, @NotBlank Long mid, @NotBlank Long sid, String self_rating,
+			@NotBlank Integer years_of_exp, @NotBlank String trainings_delivered, String facilities_offered) {
+		this.id = id;
+		this.mid = mid;
+		this.sid = sid;
+		this.self_rating = self_rating;
+		this.years_of_exp = years_of_exp;
+		this.trainings_delivered = trainings_delivered;
+		this.facilities_offered = facilities_offered;
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -90,8 +106,5 @@ public class MentorSkill {
 	public void setFacilities_offered(String facilities_offered) {
 		this.facilities_offered = facilities_offered;
 	}
-	
-	
-	
 
 }
