@@ -58,6 +58,19 @@ public class UserProfileEntity  {
 		@NotBlank
 		private String active;
 
+		public UserProfileEntity(String active, String contactnumber, String firstname, String lastname,
+				String password, String reg_code, Date reg_datetime, String username) {
+			this.active = active;
+			this.contactnumber = contactnumber;
+			this.firstname = firstname;
+			this.lastname = lastname;
+			this.password=password;
+			this.reg_code = reg_code;
+			this.reg_datetime = reg_datetime;
+			this.username=username;
+			
+		}
+
 		public Long getId() {
 			return id;
 		}
