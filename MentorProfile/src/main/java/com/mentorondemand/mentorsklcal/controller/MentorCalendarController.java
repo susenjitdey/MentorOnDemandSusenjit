@@ -33,6 +33,7 @@ public class MentorCalendarController {
 	@GetMapping("/CheckMentorAvailability/{mentorId}")
 	public List<MentorSkillRepositoryDao>checkMentorAvailability(){
 		
+		System.out.println("get Mentor Calendar");
 		return null; //TODO
 	}
 
