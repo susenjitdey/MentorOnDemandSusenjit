@@ -2,11 +2,7 @@ package com.grokonez.jwtauthentication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-/*
-INSERT INTO roles(name) VALUES('ROLE_USER');
-INSERT INTO roles(name) VALUES('ROLE_PM');
-INSERT INTO roles(name) VALUES('ROLE_ADMIN');
- */
+
 @SpringBootApplication(scanBasePackages = { "com.grokonez" })
 public class SpringBootJwtAuthenticationApplication {
 
