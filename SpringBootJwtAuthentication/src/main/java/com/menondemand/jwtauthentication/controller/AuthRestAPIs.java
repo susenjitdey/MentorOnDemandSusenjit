@@ -71,8 +71,6 @@ public class AuthRestAPIs {
 		String jwt = jwtProvider.generateJwtToken(authentication);
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-		//check if this account is confirmed, ccode will be empty if 
-		//user account is confirmed
 		List<User> lu = userRepository.findUsernameCCode(loginRequest.getUsername(), "");
 		
 		if(lu.size()>0)
