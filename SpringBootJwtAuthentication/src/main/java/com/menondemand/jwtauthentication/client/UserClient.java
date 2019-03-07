@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @FeignClient("user-service")
-public class UserClient {
+public interface UserClient {
 
 }

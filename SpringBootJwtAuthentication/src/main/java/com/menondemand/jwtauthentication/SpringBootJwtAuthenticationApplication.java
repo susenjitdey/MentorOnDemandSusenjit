@@ -9,7 +9,7 @@ INSERT INTO roles(name) VALUES('ROLE_USER');
 INSERT INTO roles(name) VALUES('ROLE_PM');
 INSERT INTO roles(name) VALUES('ROLE_ADMIN');
  */
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @EnableFeignClients
 @SpringBootApplication(scanBasePackages = { "com.menondemand" })
 public class SpringBootJwtAuthenticationApplication {
