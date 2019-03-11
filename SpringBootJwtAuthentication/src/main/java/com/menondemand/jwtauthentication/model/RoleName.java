@@ -2,6 +2,6 @@ package com.menondemand.jwtauthentication.model;
 
 public enum  RoleName {
     ROLE_USER,
-    ROLE_PM,
+    ROLE_MENTOR,
     ROLE_ADMIN
 }

@@ -1,7 +1,6 @@
 package com.menondemand.jwtauthentication.controller;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -17,22 +16,26 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.mentor.model.Mentor;
+import com.ibm.mentor.model.Skills;
 import com.menondemand.jwtauthentication.message.request.LoginForm;
+import com.menondemand.jwtauthentication.message.request.MentorSignUp;
 import com.menondemand.jwtauthentication.message.request.SignUpForm;
 import com.menondemand.jwtauthentication.message.response.JwtResponse;
 import com.menondemand.jwtauthentication.message.response.ResponseMessage;
 import com.menondemand.jwtauthentication.model.Role;
 import com.menondemand.jwtauthentication.model.RoleName;
 import com.menondemand.jwtauthentication.model.User;
+import com.menondemand.jwtauthentication.repository.MentorRepository;
 import com.menondemand.jwtauthentication.repository.RoleRepository;
+import com.menondemand.jwtauthentication.repository.SkillsRepository;
 import com.menondemand.jwtauthentication.repository.UserRepository;
 import com.menondemand.jwtauthentication.security.jwt.JwtProvider;
 
@@ -50,6 +53,12 @@ public class AuthRestAPIs {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	SkillsRepository skillsRepository;
+	
+	@Autowired
+	MentorRepository mentorRepository;
 
 	@Autowired
 	RoleRepository roleRepository;
@@ -136,7 +145,7 @@ public class AuthRestAPIs {
 	}
 	
 	@PostMapping("/mentor/signup")
-	public ResponseEntity<?> registerMentor(@Valid @RequestBody MentorSignUpForm signUpRequest) {
+	public ResponseEntity<?> registerMentor(@Valid @RequestBody MentorSignUp signUpRequest) {
 		if (mentorRepository.existsByUsername(signUpRequest.getUsername())) {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Username is already taken!"),
 					HttpStatus.BAD_REQUEST);
@@ -182,6 +191,31 @@ public class AuthRestAPIs {
 		return new ResponseEntity<>(new ResponseMessage("Mentor registered successfully!"), HttpStatus.OK);
 	}
 	
+	@GetMapping("/user")
+	public ResponseEntity<?> confirmSignup(@RequestParam("ccode") String ccode, @RequestParam("username") String username) {
+
+		if(userRepository.findByUsernameAndConfirmCode(username, ccode).isPresent()) {
+			
+			User user = userRepository.findByUsername(username).get();
+			user.setActive(true);
+			userRepository.save(user);
+			
+			return new ResponseEntity<>(new ResponseMessage("User verification successful! You may now login"), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(new ResponseMessage("Unable to Verify your account. Please contact System Administrator."), HttpStatus.OK);
+		}
+	}
+	
+	private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	
+	public static String randomAlphaNumeric(int count) {
+		StringBuilder builder = new StringBuilder();
+		while (count-- != 0) {
+			int character = (int)(Math.random()*ALPHA_NUMERIC_STRING.length());
+			builder.append(ALPHA_NUMERIC_STRING.charAt(character));
+		}
+		return builder.toString();
+	}
 	/*
 	 * //HTTP GET
 	 * 

@@ -1,5 +1,6 @@
 package com.menondemand.jwtauthentication.model;
 
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -41,10 +42,6 @@ public class User{
     @Size(min=3, max = 50)
     private String username;
 
-    @NotBlank
-    @Size(min=6, max = 100)
-    private String cCode;
-    
     @NaturalId
     @NotBlank
     @Size(max = 50)
@@ -54,6 +51,11 @@ public class User{
     @NotBlank
     @Size(min=6, max = 100)
     private String password;
+    
+    @Size(min=6, max = 10)
+    private String confirmCode;
+    
+    private boolean active;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", 
@@ -63,12 +65,12 @@ public class User{
 
     public User() {}
 
-    public User(String name, String ccode, String username, String email, String password) {
+    public User(String name, String username, String email, String password, String confirmCode) {
         this.name = name;
-        this.cCode = ccode;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.confirmCode = confirmCode;
     }
 
     public Long getId() {
@@ -118,12 +120,20 @@ public class User{
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-    
-    public void setCCode(String ccode) {
-    	this.cCode = ccode;
-    }
-    
-    public String getConfirmCode() {
-    	return this.cCode;
-    }
+
+	public String getConfirmCode() {
+		return confirmCode;
+	}
+
+	public void setConfirmCode(String confirmCode) {
+		this.confirmCode = confirmCode;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 }

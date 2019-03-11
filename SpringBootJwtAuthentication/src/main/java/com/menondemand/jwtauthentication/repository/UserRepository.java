@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsernameAndConfirmCode(String username, String confirmCode);
     Optional<User> findByUsernameAndActive(String username, boolean active);
     
-    //findByUsernameAndActive(String username, boolean active);
+    //
     
    /* @Query("SELECT p FROM User p WHERE p.username = :username and p.cCode = :ccode")
     List<User> findUsernameCCode(@Param("username") String username, @Param("ccode") String ccode);
