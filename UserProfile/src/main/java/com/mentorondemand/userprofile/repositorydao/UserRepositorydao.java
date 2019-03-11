@@ -2,10 +2,10 @@
  * 
  */
 package com.mentorondemand.userprofile.repositorydao;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.mentorondemand.userprofile.model.UserProfileEntity;
 /**
@@ -14,5 +14,11 @@ import com.mentorondemand.userprofile.model.UserProfileEntity;
  */
 @Repository
 public interface UserRepositorydao extends JpaRepository<UserProfileEntity, Long>{
+	
+	 	Optional<UserProfileEntity> findByUsername(String username);
+	    Boolean existsByUsername(String username);
+	    Boolean existsByEmail(String email);
+	    Optional<UserProfileEntity> findByUsernameAndConfirmCode(String username, String confirmCode);
+	    Optional<UserProfileEntity> findByUsernameAndActive(String username, boolean active);
 
 }
