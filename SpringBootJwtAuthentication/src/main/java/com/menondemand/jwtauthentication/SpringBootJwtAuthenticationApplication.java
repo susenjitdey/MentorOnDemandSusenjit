@@ -4,12 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-/*
-INSERT INTO roles(name) VALUES('ROLE_USER');
-INSERT INTO roles(name) VALUES('ROLE_PM');
-INSERT INTO roles(name) VALUES('ROLE_ADMIN');
- */
-//@EnableDiscoveryClient
+
+@EnableDiscoveryClient
 @EnableFeignClients
 @SpringBootApplication(scanBasePackages = { "com.menondemand" })
 public class SpringBootJwtAuthenticationApplication {

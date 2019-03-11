@@ -70,17 +70,13 @@ public class AuthRestAPIs {
 
 		String jwt = jwtProvider.generateJwtToken(authentication);
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-		List<User> lu = userRepository.findUsernameCCode(loginRequest.getUsername(), "");
 		
-		if(lu.size()>0)
-		{
+		if(userRepository.findByUsernameAndActive(loginRequest.getUsername(), true).isPresent()) {
 			return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
-		}
-		else
-		{
-			return ResponseEntity.ok("{status: \"Confirmation Pending\"}");
-		}
+		} else {
+			return new ResponseEntity<>(new ResponseMessage("User is pending email verification!"),
+					HttpStatus.BAD_REQUEST);
+		}		
 	}
 
 	@PostMapping("/signup")
@@ -94,16 +90,14 @@ public class AuthRestAPIs {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Email is already in use!"),
 					HttpStatus.BAD_REQUEST);
 		}
-
-		//generate random confirm code of atleast 6 characters
-		String ccode = "11111111";
 		
+		String confirmCode = randomAlphaNumeric(6);
+
 		// Creating user's account
-		User user = new User(signUpRequest.getName(), ccode, signUpRequest.getUsername(), signUpRequest.getEmail(),
-				encoder.encode(signUpRequest.getPassword()));
-		System.out.println("Hello Sir");
+		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
+				encoder.encode(signUpRequest.getPassword()), confirmCode);
+
 		Set<String> strRoles = signUpRequest.getRole();
-		System.out.println("Hello Sir:::"+strRoles);
 		Set<Role> roles = new HashSet<>();
 
 		strRoles.forEach(role -> {
@@ -114,10 +108,10 @@ public class AuthRestAPIs {
 				roles.add(adminRole);
 
 				break;
-			case "pm":
-				Role pmRole = roleRepository.findByName(RoleName.ROLE_PM)
+			case "mentor":
+				Role mentorRole = roleRepository.findByName(RoleName.ROLE_MENTOR)
 						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-				roles.add(pmRole);
+				roles.add(mentorRole);
 
 				break;
 			default:
@@ -129,39 +123,81 @@ public class AuthRestAPIs {
 
 		user.setRoles(roles);
 		userRepository.save(user);
-
+		
 		//send email with confirmation code in Hyper link
-		String from = "vskreddy6814@gmail.com";
-		String to = "vskreddy652@yahoo.com"; //get this email from db
-		String subject = "JavaMailSender";
-		String body = "http://localhost:8080/api/auth/user?ccode="+ccode+"&username="+signUpRequest.getUsername();
+		String from = "mentorservice22@gmail.com";
+		String to = signUpRequest.getEmail(); //get this email from db
+		String subject = "Please Verify your Email";
+		String body = "Click on link below to verify your account \n http://localhost:8080/api/auth/user?ccode="+confirmCode+"&username="+signUpRequest.getUsername();
 		
 		mailSender.sendMail(from, to, subject, body);
-		
+
 		return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);
 	}
 	
-	//HTTP GET 
-	@RequestMapping(value="user", method = RequestMethod.GET)
-	public @ResponseBody String confirmSignup(@RequestParam("ccode") String ccode, 
-			@RequestParam("username") String username
-			){
-		//validate if ccode and username confirms
-		List<User> lu = userRepository.findUsernameCCode(username, ccode);
-	
-		String status = "";
-		//if match return confirmed
-		if(lu.size()>0) //check if condition need to be improved
-		{
-			//Update ccode to empty in database
-			userRepository.updateCCode(username);
-			status = "Confirmed";
+	@PostMapping("/mentor/signup")
+	public ResponseEntity<?> registerMentor(@Valid @RequestBody MentorSignUpForm signUpRequest) {
+		if (mentorRepository.existsByUsername(signUpRequest.getUsername())) {
+			return new ResponseEntity<>(new ResponseMessage("Fail -> Username is already taken!"),
+					HttpStatus.BAD_REQUEST);
 		}
-		else //else return could not confirm
-		{
-			status = "Unable to Confirm. Pls check with Admin";
-		}
+
+		// Creating new mentor
+		Mentor mentor = new Mentor(signUpRequest.getUsername()
+								, signUpRequest.getLinkedin()
+								, signUpRequest.getYearsExp(),
+								signUpRequest.getStartTime(),
+								signUpRequest.getEndTime(),
+								signUpRequest.getFee());
+
+		Set<String> strSkills = signUpRequest.getSkills();
+		Set<Skills> skills = new HashSet<>();
 		
-		return status;
+		strSkills.forEach(skill -> {
+			Skills mentorSkill = skillsRepository.findByName(skill).orElseGet(() -> skillsRepository.save(new Skills(skill)));
+			skills.add(mentorSkill);
+		});
+
+		mentor.setSkills(skills);
+		mentorRepository.save(mentor);
+		
+		String confirmCode = randomAlphaNumeric(6);
+		
+		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getLinkedin(),
+				encoder.encode(signUpRequest.getPassword()), confirmCode);
+		Role mentorRole = roleRepository.findByName(RoleName.ROLE_MENTOR).get();
+		Set<Role> roles = new HashSet<>();
+		roles.add(mentorRole);
+		user.setRoles(roles);
+		
+		userRepository.save(user);	
+		
+		String from = "mentorservice22@gmail.com";
+		String to = signUpRequest.getLinkedin();
+		String subject = "Please Verify your Email";
+		String body = "Click on link below to verify your account \n http://localhost:8080/api/auth/user?ccode="+confirmCode+"&username="+signUpRequest.getUsername();
+		
+		mailSender.sendMail(from, to, subject, body);
+			
+		return new ResponseEntity<>(new ResponseMessage("Mentor registered successfully!"), HttpStatus.OK);
 	}
+	
+	/*
+	 * //HTTP GET
+	 * 
+	 * @RequestMapping(value="user", method = RequestMethod.GET)
+	 * public @ResponseBody String confirmSignup(@RequestParam("ccode") String
+	 * ccode,
+	 * 
+	 * @RequestParam("username") String username ){ //validate if ccode and username
+	 * confirms List<User> lu = userRepository.findUsernameCCode(username, ccode);
+	 * 
+	 * String status = ""; //if match return confirmed if(lu.size()>0) //check if
+	 * condition need to be improved { //Update ccode to empty in database
+	 * userRepository.updateCCode(username); status = "Confirmed"; } else //else
+	 * return could not confirm { status =
+	 * "Unable to Confirm. Pls check with Admin"; }
+	 * 
+	 * return status; }
+	 */
 }
